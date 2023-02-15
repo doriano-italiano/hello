@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> Szablon testowy</title>
+<link rel="stylesheet" type="text/css" href="style/glowny.css">
+</head>
+<body>
+<div id="gora">
+<h1>Szablon testowy</h1>
+</div>
+<div id="lewy">
+</div>
+<div id="srodek">
+<h1>Podaj hasło do weryfikacji<h1>
+
+<input type="password" id="haslo" placeholder="Podaj hasło">
+<p>
+	<input type="button" id="przycisk" value="weryfikuj">
+</p>
+
+<h3 id="wynik"></h3>
+</div>
+
+<div id="stopka">
+<p>Autorem strony jest:...............</p>
+</div>
+<script>
+	function maluchy(napis){
+		for(let i=0;i<napis.length;i++){
+			if(napis[i]>='a' && napis[i]<='z'){
+				return true;
+			}
+			return false;
+		}
+
+	}
+	function olbrzymy(napis){
+		for(let i=0;i<napis.length;i++){
+			if(napis[i]>='A' && napis[i]<='Z'){
+				return true;
+			}
+			return false;
+		}
+
+	}
+	function cyfry(napis){
+		for(let i=0;i<napis.length;i++){
+			if(napis[i]>='0' && napis[i]<='9'){
+				return true;
+			}
+			return false;
+		}
+
+	}
+	const baton = document.querySelector("#przycisk");
+	baton.addEventListener('click',function(){
+		//alert("Teścik");
+		let haslo = document.getElementById("haslo").value;
+		if(haslo == ""){
+			document.getElementById("wynik").style = "color: red;";
+			document.getElementById("wynik").innerHTML="<h3>Nie podałes hasła</h3>";
+		}else if(haslo.length<6){
+			document.getElementById("wynik").style = "color: orange;";
+			document.getElementById("wynik").innerHTML="<h3>Hasło musi być co najmniej 6 znakowe</h3>";
+		}else{
+			let kod="<h3>Hasło spełnia wymagania długości(przynajmniej 6 znaków)</h3>";
+			document.getElementById("wynik").style = "color: green;";
+			if(maluchy(haslo)) kod+="<h3>Hasło ma małe litery</h3>";
+			if(olbrzymy(haslo)) kod+="<h3>Hasło ma duże litery</h3>";
+			if(cyfry(haslo)) kod+="<h3>Hasło ma cyfry</h3>";
+			document.getElementById("wynik").innerHTML=kod;
+		}
+	})
+	
+
+</script>
+</body>
+</html>
