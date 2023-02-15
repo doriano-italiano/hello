@@ -1,0 +1,2 @@
+SELECT id , dataWyjazdu, cel, cena FROM `wycieczki` WHERE dostepna = '1';
+SELECT podpis, nazwaPliku FROM `zdjecia` ORDER BY podpis asc;
